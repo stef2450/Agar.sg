@@ -2,6 +2,8 @@
 void setup() {
     size(1024, 526);
 }
+
+var t = 10;
 var diameter = 50;
 var posx = 150;
 var posy = 150;
@@ -10,7 +12,7 @@ var vx = 0;
 var vy = 0;
 var DotExists = 1;
 var prikker =[];
-for (int i = 0 ;i < 500; ++i){
+for (int i = 0 ;i < 200; ++i){
     prikker.push({x : random(1024), y : random(526), color : #ff8899});
 }
 
@@ -22,6 +24,10 @@ int distance(int x1, int y1, int x2, int y2) {
 }
 
 void draw() {
+
+    if (t % 1000 === 0){
+        prikker.push({x : random(1024), y : random(526), color : #ff8899});
+    }
 
     //Ellipse
     background(#000000);
