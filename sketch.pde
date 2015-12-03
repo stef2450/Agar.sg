@@ -12,7 +12,7 @@ var vx = 0;
 var vy = 0;
 var DotExists = 1;
 var prikker =[];
-for (int i = 0 ;i < 200; ++i){
+for (int i = 0 ;i < 300; ++i){
     prikker.push({x : random(1024), y : random(526), color : #ff8899});
 }
 
@@ -35,9 +35,9 @@ void draw() {
     fill(#ff8899);
     vx = mouseX - posx;
     vy = mouseY - posy;
-    speed = sqrt(vx * vx + vy * vy);
-    posx = posx + vx/speed;
-    posy = posy + vy/speed;
+    speed = sqrt(vx * vx + vy * vy+5);
+    posx = posx + vx/speed / sqrt((score+1)/50);
+    posy = posy + vy/speed / sqrt((score+1)/50);
     ellipse(posx, posy, diameter, diameter);
     stroke(#ff88ff);
     fill(#fde201);
@@ -48,7 +48,7 @@ void draw() {
         if (distance(posx, posy, prikker[i].x, prikker[i].y) < diameter / 2) {
             prikker.splice(i,1);
             score = score + 1;
-            diameter = 50 + score;
+            diameter = 50 + 0.5*score;
         }
     }
 
